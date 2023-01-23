@@ -1,0 +1,22 @@
+1. Check if given string is a rotated palindrome or not 
+expand(string str, int low, int high, int k): This function takes four arguments:
+str: the input string
+low: the starting index of the substring
+high: the ending index of the substring
+k: the length of the palindrome we are trying to find
+This function expands in both directions from the indices low and high to find a palindrome of length k in the input string. It does this by checking if the characters at index low and high are the same, and if they are, it continues to expand in both directions (low--, high++). If a palindrome of length k is found, the function returns true. If the characters at index low and high are not the same, or if a palindrome of length k is not found, the function returns false.
+
+For example, if we call expand("abccba", 2, 3, 4), the function will check if the characters at index 2 and 3 are the same (which they are, 'c' and 'c'), and then continue to expand in both directions to check the characters at index 1 and 4 (which are 'b' and 'b'). Since these characters are the same, the function will return true, indicating that a palindrome of length 4 exists in the input string.
+
+longestPalindromicSubstring(string str, int k): This function takes two arguments:
+str: the input string
+k: the length of the palindrome we are trying to find
+This function checks if a palindrome of length k exists in the input string by checking all possible substrings that have str[i] as their midpoint (for both odd and even length palindromes) using the expand function. If a palindrome of length k is found, the function returns true. If a palindrome of length k is not found, the function returns false.
+
+For example, if we call longestPalindromicSubstring("abccba", 4), the function will check all possible substrings that have str[i] as their midpoint (expand("abccba", 2, 2, 4) and expand("abccba", 2, 3, 4)) and will return true since a palindrome of length 4 exists in the input string.
+
+isRotatedPalindrome(string str): This function takes one argument:
+str: the input string
+This function first rotates the input string by a certain number of units, then it checks if the longest palindromic substring of length n exists in the string str + str using the longestPalindromicSubstring function. If it does exist, the function returns true. If it doesn't exist, the function returns false.
+
+For example, if we call isRotatedPalindrome("ABCCBA"), the function will first rotate the input string by 2 units (resulting in "CCBAAB") and then check if the longest palindromic substring of length 6 exists in the string "CCBAABCCBAAB" using the longestPalindromicSubstring function. Since a palindrome of length 6 exists in the input
